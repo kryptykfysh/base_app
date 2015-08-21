@@ -25,3 +25,7 @@
 /vendor/extensions
 /vendor/cache
 /vendor/bin
+
+# Environment files
+.ruby-vars
+.rbenv-vars
