@@ -20,6 +20,7 @@ app.config([
       {
         controller: 'SomethingElseController',
         templateUrl: 'something_else.html'
+      }
     )
 ])
 
