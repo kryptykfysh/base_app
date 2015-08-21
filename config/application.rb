@@ -1,3 +1,4 @@
+# coding: utf-8
 require File.expand_path('../boot', __FILE__)
 
 require "rails"
@@ -10,6 +11,7 @@ require "action_mailer/railtie"
 require "action_view/railtie"
 require "sprockets/railtie"
 # require "rails/test_unit/railtie"
+require 'redis-rails'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -34,5 +36,20 @@ module BaseApp
 
     # Use SQL in schema
     config.active_record.schema_format = :sql
+
+    # Redis caching
+    conn_string = 'redis://'
+    conn_string << ":#{ENV['REDIS_PASS']}@" if ENV['REDIS_PASS']
+    conn_string << (ENV['REDIS_HOST'] || 'localhost')
+    conn_string << ":#{ENV['REDIS_PORT'] || 6379}/"
+    conn_string << (ENV['REDIS_DB'] || '0')
+    cache_string = conn_string + '/cache'
+    config.cache_store =  :redis_store,
+                          cache_string,
+                          { expires_in: 90.minutes }
+    config.action_dispatch.rack_cache = {
+      metastore:          (conn_string + '/metastore'),
+      entitystore:        (conn_string + '/entitystore')
+    }
   end
 end

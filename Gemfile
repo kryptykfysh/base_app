@@ -29,6 +29,10 @@ gem 'devise'
 gem 'bower-rails'
 # Use Puma for server
 gem 'puma'
+# Use Redis for caching
+gem 'redis-rails'
+# And Rack-Cache for more caching!
+gem 'rack-cache'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
