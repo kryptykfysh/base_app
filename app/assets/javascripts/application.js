@@ -15,6 +15,9 @@
 //= require bootstrap-sass-official
 //= require angular
 //= require angular-route
-//= angular-rails-templates
+//= require angular-rails-templates
+//= require main
+//= require_tree ./controllers
+//= require_tree ./services
 //= require_tree ./templates
 //= require_tree .
