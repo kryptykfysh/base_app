@@ -1,6 +1,7 @@
+# coding: utf-8
+
 class HomeController < ApplicationController
   def index
-    @user = user_signed_in? ? current_user : nil
-    Rails.logger.debug @user.inspect
+    @api_token = current_user ? current_user.api_token.value : nil
   end
 end

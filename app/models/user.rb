@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :rememberable, :trackable, :omniauthable,
     omniauth_providers: [:google_oauth2]
-  has_one :api_token, class_name: 'Api::Token', as: :tokenable
+  has_one :api_token, class_name: 'Api::Token', as: :tokenable, dependent: :destroy
+  before_create :build_api_token
 
   def self.from_omniauth(access_token)
     Rails.logger.debug access_token.inspect

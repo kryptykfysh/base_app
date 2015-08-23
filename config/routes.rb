@@ -8,7 +8,8 @@ Rails.application.routes.draw do
     delete 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
 
-  namespace :api, path: '', constraints: { subdomain: 'api' }, defaults: { format: 'json' } do
+  namespace :api, defaults: { format: 'json' } do
+    resources :users
     namespace :v1 do
       resources :users
     end
