@@ -1,8 +1,8 @@
 FactoryGirl.define do
-  factory :api_token do
-    api_tokenable_id 1
-api_tokenable_type "MyString"
-token "MyString"
+  factory :api_token, :class => 'Api::Token' do
+    tokenable_id 1
+tokenable_type "MyString"
+value "MyString"
   end
 
 end

@@ -35,9 +35,9 @@ SET default_with_oids = false;
 
 CREATE TABLE api_tokens (
     id integer NOT NULL,
-    api_tokenable_id integer NOT NULL,
-    api_tokenable_type character varying NOT NULL,
-    token character varying NOT NULL,
+    tokenable_id integer NOT NULL,
+    tokenable_type character varying NOT NULL,
+    value character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -147,24 +147,24 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: index_api_tokens_on_api_tokenable_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_api_tokens_on_tokenable_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_api_tokens_on_api_tokenable_id ON api_tokens USING btree (api_tokenable_id);
-
-
---
--- Name: index_api_tokens_on_api_tokenable_id_and_api_tokenable_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_api_tokens_on_api_tokenable_id_and_api_tokenable_type ON api_tokens USING btree (api_tokenable_id, api_tokenable_type);
+CREATE INDEX index_api_tokens_on_tokenable_id ON api_tokens USING btree (tokenable_id);
 
 
 --
--- Name: index_api_tokens_on_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_api_tokens_on_tokenable_id_and_tokenable_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE UNIQUE INDEX index_api_tokens_on_token ON api_tokens USING btree (token);
+CREATE UNIQUE INDEX index_api_tokens_on_tokenable_id_and_tokenable_type ON api_tokens USING btree (tokenable_id, tokenable_type);
+
+
+--
+-- Name: index_api_tokens_on_value; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_api_tokens_on_value ON api_tokens USING btree (value);
 
 
 --
@@ -205,5 +205,5 @@ INSERT INTO schema_migrations (version) VALUES ('20150821010657');
 
 INSERT INTO schema_migrations (version) VALUES ('20150823000212');
 
-INSERT INTO schema_migrations (version) VALUES ('20150823065314');
+INSERT INTO schema_migrations (version) VALUES ('20150823070415');
 
