@@ -1,3 +1,2 @@
-%div{ 'ng-controller': 'MainController' }
-  %div#api-token{ style: 'display: none;', data: { 'api-token': "#{@api_token}" } }
-  %p {{ apiToken }}
+%div#api-token{ style: 'display: none;', data: { 'api-token': "#{@api_token}" } }
+%ng-view

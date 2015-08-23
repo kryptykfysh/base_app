@@ -38,6 +38,8 @@ gem 'rack-cache'
 gem 'redis-rack-cache'
 # Angular Rails templates
 gem 'angular-rails-templates'
+# Angular Rails Templates does not play well with sprockets > 3
+gem 'sprockets', '2.12.3'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
