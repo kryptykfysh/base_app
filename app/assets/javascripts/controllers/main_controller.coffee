@@ -1,6 +1,7 @@
 angular.module('main.controllers').controller(
   'MainController',
-  ['$scope',
-  ($scope) ->
+  ['$scope', 'apiTokenInitializer',
+  ($scope, apiTokenInitializer) ->
+    $scope.apiToken = apiTokenInitializer
   ]
 )

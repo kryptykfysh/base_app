@@ -3,8 +3,8 @@ app = angular.module(
   [
     'ngRoute',
     'templates',
-    'main.controllers',
-    'main.services'
+    'main.services',
+    'main.controllers'
   ]
 )
 

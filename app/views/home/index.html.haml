@@ -1,2 +1,3 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+%div{ 'ng-controller': 'MainController' }
+  %div#api-token{ style: 'display: none;', data: { 'api-token': "#{@user ? @user.first_name : nil}" } }
+  %p {{ apiToken }}
