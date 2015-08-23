@@ -7,6 +7,13 @@ Rails.application.routes.draw do
     get 'sign_in', to: 'devise/sessions#new', as: :new_user_session
     delete 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
+
+  namespace :api, path: '', constraints: { subdomain: 'api' }, defaults: { format: 'json' } do
+    namespace :v1 do
+      resources :users
+    end
+    match '*path', via: [:get, :post, :delete], to: redirect("/api/v1/%{path}")
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
