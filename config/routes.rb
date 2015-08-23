@@ -10,8 +10,10 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: 'json' } do
     resources :users
+    get 'current_user', to: 'v1/current_user#show', as: :current_user
     namespace :v1 do
       resources :users
+      get 'current_user', to: 'current_user#show', as: :current_user
     end
     match '*path', via: [:get, :post, :delete], to: redirect("/api/v1/%{path}")
   end

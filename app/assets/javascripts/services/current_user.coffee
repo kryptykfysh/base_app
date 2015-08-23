@@ -3,7 +3,7 @@ angular.module('main.services').factory(
   ['apiTokenInitializer', '$http',
   (apiTokenInitializer, $http) ->
     token = apiTokenInitializer
-    $http.defaults.headers.common.Authorization = token
-    $http.get('/api/users')
+    $http.defaults.headers.common.Authorization = "Token token=#{token}"
+    $http.get('/api/current_user')
   ]
 )
