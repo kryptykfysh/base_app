@@ -7,11 +7,12 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body.container{ 'ng-app': 'main' }
-    = render 'shared/header'
+    %div{ 'ng-controller': 'WrapperController' }
+      = render 'shared/header'
 
-    -if notice.present?
-      %aside.alert.alert-info= notice
-    -if alert.present?
-      %aside.alert.alert.danger= alert
+      -if notice.present?
+        %aside.alert.alert-info= notice
+      -if alert.present?
+        %aside.alert.alert.danger= alert
 
-    = yield
+      = yield
