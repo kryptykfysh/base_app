@@ -4,12 +4,14 @@ app = angular.module(
     'ngRoute',
     'templates',
     'main.services',
+    'main.models',
     'main.controllers'
   ]
 )
 
 angular.module('main.controllers', [])
 angular.module('main.services', [])
+angular.module('main.models', [])
 
 app.config([
   '$routeProvider',

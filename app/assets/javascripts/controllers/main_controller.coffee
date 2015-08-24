@@ -1,11 +1,12 @@
 angular.module('main.controllers').controller(
   'MainController',
-  ['$scope', 'apiTokenInitializer', 'currentUser',
-  ($scope, apiTokenInitializer, currentUser) ->
+  ['$scope', 'apiTokenInitializer', 'User',
+  ($scope, apiTokenInitializer, User) ->
     $scope.apiToken = apiTokenInitializer
+    $scope.current_user = null
     if $scope.apiToken
-      currentUser.getCurrentUser($scope.apiToken).then((data) ->
-        $scope.current_user = data
+      User.getCurrentUser($scope.apiToken).then((user) ->
+        $scope.current_user = user
     )
   ]
 )
