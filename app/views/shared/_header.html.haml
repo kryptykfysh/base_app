@@ -1,5 +1,4 @@
-%div{ 'ng-controller': 'HeaderController', 'ng-init': 'init()' }
-  %div{ 'ng-init': "init(#{@user.to_json.html_safe})" }
+%div{ 'ng-controller': 'HeaderController' }
   %nav.navbar.navbar-default
     .container-fluid
       .navbar-header
@@ -23,7 +22,7 @@
             - if user_signed_in?
               %li.dropdown
                 %a.dropdown-toggle{ href: '#', role: 'button', aria: { haspopup: true, expanded: false }, data: { toggle: 'dropdown' } }
-                  {{ user.first_name }}
+                  {{ current_user.first_name }}
                   %span.caret
                 %ul.dropdown-menu
                   %li
